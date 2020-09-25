@@ -8,8 +8,6 @@ import Header from "../Header";
 const AccountsPage = props => { 
     const [accounts, setAccounts] = useState({});
 
-
-
     const addAccount = account => { 
         setAccounts(prevState => { 
             let newState = Object.assign({}, prevState); 
@@ -23,6 +21,13 @@ const AccountsPage = props => {
         setAccounts(prevState => { 
             return { ...prevState, [newId]: { id: newId, formType: "create" } }
         });
+    }
+
+    const editAccount = account => { 
+        console.log("ok")
+        let newState = Object.assign({}, accounts);
+        newState[account.id] = account;
+        setAccounts(newState);
     }
 
     const deleteAccount = accountId => { 
@@ -42,19 +47,21 @@ const AccountsPage = props => {
             {
             Object.keys(accounts).map(accountId => { 
                 let account = accounts[accountId];
-                return account.formType === "create" || account.formType === "edit" 
+                return account.formType === "create" 
                     ? 
                     <AccountsForm 
                         key={account.id} 
                         addAccount={addAccount} 
                         id={account.id} 
                         formType={account.formType} 
+                        deleteAccount={deleteAccount}
                     /> 
                     : 
                     <AccountsPageItem 
                         key={account.id} 
                         account={account} 
                         deleteAccount={deleteAccount} 
+                        editAccount={editAccount}
                     />
             })
             }
