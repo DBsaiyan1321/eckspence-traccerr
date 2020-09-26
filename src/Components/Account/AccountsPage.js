@@ -30,32 +30,36 @@ const AccountsPage = props => {
     }
 
     return (
-        <div> 
-            <Header />
-            {
-            Object.keys(global.globalState.accounts).map(accountId => { 
-                let account = global.globalState.accounts[accountId];
-                return account.formType === "create" 
-                    ? 
-                    <AccountsForm 
-                        key={account.id} 
-                        addAccount={addAccount} 
-                        id={account.id} 
-                        formType={account.formType} 
-                        deleteAccount={deleteAccount}
-                    /> 
-                    : 
-                    <AccountsPageItem 
-                        key={account.id} 
-                        account={account} 
-                        deleteAccount={deleteAccount} 
-                        editAccount={editAccount}
-                    />
-            })
-            }
+        
+            <div className="accounts-page">
+                <h1>Accounts</h1> 
+                <ul>
+                    {
+                        Object.keys(global.globalState.accounts).map(accountId => {
+                            let account = global.globalState.accounts[accountId];
+                            return account.formType === "create"
+                                ?
+                                <AccountsForm
+                                    key={account.id}
+                                    addAccount={addAccount}
+                                    id={account.id}
+                                    formType={account.formType}
+                                    deleteAccount={deleteAccount}
+                                />
+                                :
+                                <AccountsPageItem
+                                    key={account.id}
+                                    account={account}
+                                    deleteAccount={deleteAccount}
+                                    editAccount={editAccount}
+                                />
+                        })
+                    }
+                </ul>
 
-            <button onClick={createAccount}>New Account</button>
-        </div>
+
+                <button onClick={createAccount}>New Account</button>
+            </div>
     )
 };
 

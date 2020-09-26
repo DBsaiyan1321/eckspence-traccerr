@@ -1,0 +1,9 @@
+.footer { 
+    /* background-color: transparent; */
+    background-color: #4cc7ff;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+}
+
+    /* list-style: none; */

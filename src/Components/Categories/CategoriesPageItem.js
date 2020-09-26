@@ -21,8 +21,8 @@ const CategoriesPageItem = props => {
                 <h1>{props.category.title}</h1>
                 <h2>{props.category.type}</h2>
                 <p>{props.category.date}</p>
-                <button onClick={() => props.deleteCategory(props.category.id)}>Delete</button>
                 <button onClick={() => setEdit(!edit)}>Edit</button>
+                <button onClick={() => props.deleteCategory(props.category.id)}>Delete</button>
             </div>
     )
 };  

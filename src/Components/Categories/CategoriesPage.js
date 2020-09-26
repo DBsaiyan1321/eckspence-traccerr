@@ -30,7 +30,6 @@ const CategoriesPage = props => {
 
     return ( 
         <div>
-            <Header />
             {
                 Object.keys(global.globalState.categories).map(categoryId => {
                     let category = global.globalState.categories[categoryId];

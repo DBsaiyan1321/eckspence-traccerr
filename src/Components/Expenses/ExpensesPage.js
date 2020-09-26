@@ -36,7 +36,6 @@ const ExpensesPage = props => {
 
     return (
         <div>
-            <Header />
             {
                 Object.keys(global.globalState.expenses).map(expenseId => {
                     let expense = global.globalState.expenses[expenseId];

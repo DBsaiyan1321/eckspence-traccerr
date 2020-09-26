@@ -17,14 +17,14 @@ const AccountsPageItem = props => {
     return (
         edit ? 
         <AccountsForm formType="edit" id={props.account.id} account={props.account} cancelEdit={cancelEdit} editAccount={props.editAccount} /> : 
-        <div style={divStyle}>
+        <li style={divStyle} className="accounts-page-item">
             {/* <div className="accountIcon"><Icon /></div> */}
             <h1>{props.account.title}</h1>
             <h2>{props.account.type}</h2>
             <p>{props.account.date}</p>
-            <button onClick={() => props.deleteAccount(props.account.id)}>Delete</button>
-            <button onClick={() => setEdit(!edit)}>Edit</button>
-        </div>
+            <button onClick={() => setEdit(!edit)} className="button">Edit</button>
+            <button onClick={() => props.deleteAccount(props.account.id)} className="button">Delete</button>
+        </li>
     )
 };
 

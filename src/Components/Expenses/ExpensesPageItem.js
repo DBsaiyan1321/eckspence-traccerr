@@ -23,8 +23,8 @@ const ExpensesPageItem = props => {
                 <p>{props.expense.date}</p>
                 <p>{props.category}</p>
                 <p>{props.account}</p>
-                <button onClick={() => props.deleteExpense(props.expense.id)}>Delete</button>
                 <button onClick={() => setEdit(!edit)}>Edit</button>
+                <button onClick={() => props.deleteExpense(props.expense.id)}>Delete</button>
             </div>
     )
 };
