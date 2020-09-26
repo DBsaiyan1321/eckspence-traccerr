@@ -36,10 +36,13 @@ const GlobalState = props => {
         }
     };
 
-    const [globalState, dispatch] = useReducer(initialState, trackerReducer);
-
+    const [globalState, dispatch] = useReducer(trackerReducer, initialState);
+    console.log(globalState);
     return (
-        <TrackerContext.Provider value={globalState, dispatch}>
+        <TrackerContext.Provider value={{
+            globalState, 
+            dispatch
+        }}>
             {props.children}
         </TrackerContext.Provider>
     );

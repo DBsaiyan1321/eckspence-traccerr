@@ -5,6 +5,8 @@ const AccountsForm = props => {
     const [color, setColor] = useState("#f6b73c");
     const [icon, setIcon] = useState("");
     const [title, setTitle] = useState("");
+    const [ownedCategories, setOwnedCategories] = useState([]);
+    const [ownedExpenses, setOwnedExpenses] = useState([]);
     const [dateCreated, setDateCreated] = useState(false);
 
     useEffect(() => { 
@@ -13,6 +15,8 @@ const AccountsForm = props => {
             setType(props.account.type);
             setColor(props.account.color);
             setTitle(props.account.title);
+            setOwnedCategories(props.account.ownedCategories);
+            setOwnedExpenses(props.account.ownedExpenses);
             // setDateCreated(!!props.account.date);
         } 
     }, [])
@@ -53,7 +57,7 @@ const AccountsForm = props => {
         }
 
 
-        let account = { id: props.id, type, color, icon, title, date: today };
+        let account = { id: props.id, type, color, icon, title, date: today, ownedCategories, ownedExpenses };
         props.editAccount(account);
 
         props.cancelEdit();
@@ -61,7 +65,7 @@ const AccountsForm = props => {
 
     const cancelCreate = e => { 
         e.preventDefault();
-        props.deleteAccount(props.id);
+        props.deleteAccount();
     }
 
     const cancelEdit = e => { 

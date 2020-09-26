@@ -5,52 +5,36 @@ import AccountsPageItem from "./AccountsPageItem";
 import AccountsForm from "./AccountsForm";
 import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
+import { ADD_ACCOUNT, ADD_ACCOUNTS, DELETE_ACCOUNT } from "../../Context/reducers";
 
 const AccountsPage = props => { 
     const [accounts, setAccounts] = useState({});
-    const globalAccounts = useContext(TrackerContext);
-
-    console.log(globalAccounts);
+    const global = useContext(TrackerContext);
 
     const addAccount = account => { 
-        setAccounts(prevState => { 
-            let newState = Object.assign({}, prevState); 
-            newState[account.id] = { id: account.id, ...account }
-            return newState;
-        })
+        global.dispatch({ type: ADD_ACCOUNT, account})
     }
 
     const createAccount = () => { 
-        let newId = Object.keys(accounts).length + 1;
-        setAccounts(prevState => { 
-            return { ...prevState, [newId]: { id: newId, formType: "create" } }
-        });
+        let newId = Object.keys(global.globalState.accounts).length + 1;
+        let account = { id: newId, formType: "create" };
+        global.dispatch({ type: ADD_ACCOUNT, account })
     }
 
     const editAccount = account => { 
-        console.log("ok")
-        let newState = Object.assign({}, accounts);
-        newState[account.id] = account;
-        setAccounts(newState);
+        global.dispatch({ type: ADD_ACCOUNT, account })
     }
 
     const deleteAccount = accountId => { 
-        setAccounts(prevState => { 
-            let newState = Object.assign({}, prevState);
-            delete newState[accountId];
-            console.log(accountId)
-            return newState;
-        })
+        global.dispatch({ type: DELETE_ACCOUNT, accountId })
     }
-
-    console.log(accounts)
 
     return (
         <div> 
             <Header />
             {
-            Object.keys(accounts).map(accountId => { 
-                let account = accounts[accountId];
+            Object.keys(global.globalState.accounts).map(accountId => { 
+                let account = global.globalState.accounts[accountId];
                 return account.formType === "create" 
                     ? 
                     <AccountsForm 
