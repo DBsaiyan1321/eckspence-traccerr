@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../reset.css";
 import "./AccountsPage.css";
 import AccountsPageItem from "./AccountsPageItem";
 import AccountsForm from "./AccountsForm";
 import Header from "../Header";
+import TrackerContext from "../../Context/TrackerContext";
 
 const AccountsPage = props => { 
     const [accounts, setAccounts] = useState({});
+    const globalAccounts = useContext(TrackerContext);
+
+    console.log(globalAccounts);
 
     const addAccount = account => { 
         setAccounts(prevState => { 

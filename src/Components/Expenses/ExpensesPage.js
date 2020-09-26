@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ExpensesPage = props => { 
     const [expenses, setExpenses] = useState({});
 
-    
+
     return <div>Expenses</div>
 };
 
