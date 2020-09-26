@@ -31,13 +31,14 @@ const GlobalState = props => {
                 date: "9/25/20",
                 amount: "259.32",
                 categoryId: 1,
-                accountId: 1
+                accountId: 1,
+                color: "#ff81d2"
             }
         }
     };
 
     const [globalState, dispatch] = useReducer(trackerReducer, initialState);
-    console.log(globalState);
+    // console.log(globalState);
     return (
         <TrackerContext.Provider value={{
             globalState, 

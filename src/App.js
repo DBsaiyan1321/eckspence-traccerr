@@ -12,7 +12,7 @@ function App() {
     <GlobalState>
       <HashRouter> 
         <Switch>
-          <Route exact path="/" component={AccountsPage} />
+          <Route exact path="/accounts" component={AccountsPage} />
           <Route exact path="/categories" component={CategoriesPage} />
           <Route exact path="/expenses" component={ExpensesPage} />
           <Route exact path="*" component={Dashboard} />

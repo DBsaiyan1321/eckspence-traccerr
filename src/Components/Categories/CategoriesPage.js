@@ -3,12 +3,13 @@ import { ADD_CATEGORY, DELETE_CATEGORY } from "../../Context/reducers";
 import TrackerContext from "../../Context/TrackerContext";
 import CategoriesPageItem from "./CategoriesPageItem";
 import Header from "../Header";
-import CategoriesForm from "./CategoriesForm"
+import CategoriesForm from "./CategoriesForm";
+import "./CategoriesPage.css";
 
 const CategoriesPage = props => { 
     const [categories, setCategories] = useState({});
     const global = useContext(TrackerContext);
-    
+    console.log(global.globalState);
     const addCategory = category => {
         global.dispatch({ type: ADD_CATEGORY, category })
     }

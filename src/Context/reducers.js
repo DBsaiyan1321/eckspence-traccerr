@@ -18,11 +18,11 @@ export const trackerReducer = (oldState, action) => {
             return;
         case ADD_ACCOUNT: 
             newState = Object.assign({}, oldState); 
-            newState["accounts"][action.account.id] = { id: action.account.id, ...action.account }
+            newState.accounts[action.account.id] = { id: action.account.id, ...action.account }
             return newState;
         case DELETE_ACCOUNT: 
             newState = Object.assign({}, oldState); 
-            delete newState["accounts"][action.accountId]
+            delete newState.accounts[action.accountId]
             return newState;
         case ADD_CATEGORIES:
             return;
@@ -38,9 +38,12 @@ export const trackerReducer = (oldState, action) => {
             return;
         case ADD_EXPENSE:
             newState = Object.assign({}, oldState);
+            newState.expenses[action.expense.id] = { id: action.expense.id, ...action.expense }
             return newState;
         case DELETE_EXPENSE:
+            // debugger
             newState = Object.assign({}, oldState);
+            delete newState.expenses[action.expenseId]
             return newState;
         default: 
             return oldState;
