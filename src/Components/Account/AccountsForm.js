@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { IconPicker } from "react-fa-icon-picker";
 
 const AccountsForm = props => { 
     const [type, setType] = useState("");
@@ -9,6 +10,8 @@ const AccountsForm = props => {
     const [ownedExpenses, setOwnedExpenses] = useState([]);
     const [dateCreated, setDateCreated] = useState(false);
 
+    console.log(icon)
+
     useEffect(() => { 
         if (props.account) { 
             // console.log(props.account)
@@ -17,6 +20,7 @@ const AccountsForm = props => {
             setTitle(props.account.title);
             setOwnedCategories(props.account.ownedCategories);
             setOwnedExpenses(props.account.ownedExpenses);
+            setIcon(props.account.icon);
             // setDateCreated(!!props.account.date);
         } 
     }, [])
@@ -100,6 +104,8 @@ const AccountsForm = props => {
                 <option value="FaCarAlt">I</option>
                 <option value="FaGraduationCap">J</option>
             </select>  */}
+            <label htmlFor="icon">Icon:</label>
+            <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
 
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" />
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react"; 
 import CategoriesForm from "./CategoriesForm";
+import { IconPickerItem } from "react-fa-icon-picker";
 
 const CategoriesPageItem = props => { 
     const [edit, setEdit] = useState(false);
 
-    // let Icon = props.account.icon; 
     const divStyle = {
         backgroundColor: props.category.color
     };
@@ -17,7 +17,7 @@ const CategoriesPageItem = props => {
         edit ?
             <CategoriesForm formType="edit" id={props.category.id} category={props.category} cancelEdit={cancelEdit} editCategory={props.editCategory} /> :
             <div style={divStyle}>
-                {/* <div className="categoryIcon"><Icon /></div> */}
+                <div className="categoryIcon"><IconPickerItem icon={`${props.category.icon}`} /></div>
                 <h1>{props.category.title}</h1>
                 <h2>{props.category.type}</h2>
                 <p>{props.category.date}</p>

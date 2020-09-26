@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 // import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
 import AccountsForm from "./AccountsForm";
+import { IconPickerItem } from "react-fa-icon-picker";
 
 const AccountsPageItem = props => {
     const [edit, setEdit] = useState(false);
-
-    // let Icon = props.account.icon; 
+    
     const divStyle = { 
         backgroundColor: props.account.color
     };
@@ -18,7 +18,7 @@ const AccountsPageItem = props => {
         edit ? 
         <AccountsForm formType="edit" id={props.account.id} account={props.account} cancelEdit={cancelEdit} editAccount={props.editAccount} /> : 
         <li style={divStyle} className="accounts-page-item">
-            {/* <div className="accountIcon"><Icon /></div> */}
+            <div className="accountIcon"><IconPickerItem icon={`${props.account.icon}`} /></div>
             <h1>{props.account.title}</h1>
             <h2>{props.account.type}</h2>
             <p>{props.account.date}</p>

@@ -7,10 +7,28 @@ const GlobalState = props => {
         accounts: {
             1: {
                 id: 1,
-                type: "Old",
+                type: "Debit",
                 color: "#ff81d2",
-                icon: "Bird",
-                title: "New",
+                icon: "FaAccessibleIcon",
+                title: "General",
+                ownedCategories: [1],
+                ownedExpenses: [1]
+            },
+            2: {
+                id: 2,
+                type: "Credit",
+                color: "#ff81d2",
+                icon: "FaAccessibleIcon",
+                title: "Whatever",
+                ownedCategories: [1],
+                ownedExpenses: [1]
+            }, 
+            3: { 
+                id: 3,
+                type: "Debit",
+                color: "#ff81d2",
+                icon: "FaAccessibleIcon",
+                title: "Debt Free Journey",
                 ownedCategories: [1],
                 ownedExpenses: [1]
             }
@@ -19,8 +37,24 @@ const GlobalState = props => {
             1: {
                 id: 1,
                 color: "#ff81d2",
-                icon: "Bird",
-                title: "New",
+                icon: "FaAccessibleIcon",
+                title: "General",
+                accountId: [1],
+                ownedExpenses: [1]
+            }, 
+            2: { 
+                id: 2,
+                color: "#ff81d2",
+                icon: "FaAccessibleIcon",
+                title: "Entertainment",
+                accountId: [1],
+                ownedExpenses: [1]
+            }, 
+            3: { 
+                id: 3,
+                color: "#ff81d2",
+                icon: "FaAccessibleIcon",
+                title: "Groceries",
                 accountId: [1],
                 ownedExpenses: [1]
             }

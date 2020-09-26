@@ -92,7 +92,7 @@ const ExpensesForm = props => {
 
             <label htmlFor="accountId">Account</label>
             <select id="accountId" onChange={e => setAccountId(e.target.value)}>
-                <option value=""></option>
+                {/* <option value=""></option> */}
                 {
                     Object.keys(global.globalState.accounts).map(accountId => {
                         return <option key={`{${accountId}`} value={accountId}>{`${global.globalState.accounts[accountId].title}`}</option>
@@ -102,7 +102,7 @@ const ExpensesForm = props => {
 
             <label htmlFor="categoryId">Category</label>
             <select id="categoryId" onChange={e => setCategoryId(e.target.value)}>
-                <option value=""></option>
+                {/* <option value=""></option> */}
                 {
                     Object.keys(global.globalState.categories).map(categoryId => {
                         return <option key={`{${categoryId}`} value={categoryId}>{`${global.globalState.categories[categoryId].title}`}</option>
