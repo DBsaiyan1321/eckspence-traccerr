@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
+// import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
 import AccountsForm from "./AccountsForm";
 
 const AccountsPageItem = props => {
@@ -14,8 +14,6 @@ const AccountsPageItem = props => {
         setEdit(!edit);
     }
 
-    console.log(edit)
-    
     return (
         edit ? 
         <AccountsForm formType="edit" id={props.account.id} account={props.account} cancelEdit={cancelEdit} editAccount={props.editAccount} /> : 
