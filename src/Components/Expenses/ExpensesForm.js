@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import TrackerContext from "../../Context/TrackerContext";
 
 const ExpensesForm = props => {
     const [amount, setAmount] = useState("");
@@ -6,6 +7,8 @@ const ExpensesForm = props => {
     const [categoryId, setCategoryId] = useState(1);
     const [accountId, setAccountId] = useState(1);
     const [dateCreated, setDateCreated] = useState(false);
+
+    const global = useContext(TrackerContext);
 
     useEffect(() => {
         if (props.expense) {
@@ -86,6 +89,26 @@ const ExpensesForm = props => {
 
             <label htmlFor="dateCreate">Date</label>
             <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />
+
+            <label htmlFor="accountId">Account</label>
+            <select id="accountId" onChange={e => setAccountId(e.target.value)}>
+                <option value=""></option>
+                {
+                    Object.keys(global.globalState.accounts).map(accountId => {
+                        return <option key={`{${accountId}`} value={accountId}>{`${global.globalState.accounts[accountId].title}`}</option>
+                    })
+                }
+            </select> 
+
+            <label htmlFor="categoryId">Category</label>
+            <select id="categoryId" onChange={e => setCategoryId(e.target.value)}>
+                <option value=""></option>
+                {
+                    Object.keys(global.globalState.categories).map(categoryId => {
+                        return <option key={`{${categoryId}`} value={categoryId}>{`${global.globalState.categories[categoryId].title}`}</option>
+                    })
+                }
+            </select> 
 
             <input type="submit" value={props.formType} />
 

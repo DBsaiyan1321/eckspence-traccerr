@@ -57,7 +57,6 @@ const AccountsPage = props => {
                     }
                 </ul>
 
-
                 <button onClick={createAccount}>New Account</button>
             </div>
     )

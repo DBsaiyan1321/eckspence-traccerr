@@ -5,6 +5,7 @@
     background-color: rgb(255, 255, 255);
     margin: 15px;
     padding: 5px 20px;
+    box-shadow: 0px 5px 10px #0000005e;
 }
 
 .accounts-page-item {
@@ -20,6 +21,15 @@
 .accounts-page-item:hover { 
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0px 5px 2px #00000059;
+}
+
+.button { 
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .accountIcon { 

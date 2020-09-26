@@ -18,13 +18,13 @@ const ExpensesPageItem = props => {
         edit ?
             <ExpensesForm formType="edit" id={props.expense.id} expense={props.expense} cancelEdit={cancelEdit} editExpense={props.editExpense} /> 
             :
-            <div style={divStyle}>
+            <div style={divStyle} className="expenses-page-item">
                 <h1>{props.expense.amount}</h1>
                 <p>{props.expense.date}</p>
                 <p>{props.category}</p>
                 <p>{props.account}</p>
-                <button onClick={() => setEdit(!edit)}>Edit</button>
-                <button onClick={() => props.deleteExpense(props.expense.id)}>Delete</button>
+                <button onClick={() => setEdit(!edit)} className="button">Edit</button>
+                <button onClick={() => props.deleteExpense(props.expense.id)} className="button">Delete</button>
             </div>
     )
 };
