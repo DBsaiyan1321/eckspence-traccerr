@@ -65,7 +65,7 @@ const AccountsForm = props => {
 
     const cancelCreate = e => { 
         e.preventDefault();
-        props.deleteAccount();
+        props.deleteAccount(props.id);
     }
 
     const cancelEdit = e => { 

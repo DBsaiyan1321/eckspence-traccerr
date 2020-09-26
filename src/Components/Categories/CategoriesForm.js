@@ -65,7 +65,7 @@ const CategoriesForm = props => {
 
     const cancelCreate = e => {
         e.preventDefault();
-        props.deleteCategory();
+        props.deleteCategory(props.id);
     }
 
     const cancelEdit = e => {
