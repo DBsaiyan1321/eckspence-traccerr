@@ -66,7 +66,7 @@ const AccountsPage = props => {
             })
             }
 
-            <button onClick={createAccount}>New Category</button>
+            <button onClick={createAccount}>New Account</button>
         </div>
     )
 };
