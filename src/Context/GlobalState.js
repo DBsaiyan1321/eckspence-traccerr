@@ -3,8 +3,13 @@ import TrackerContext from "./TrackerContext";
 import { trackerReducer } from "./reducers";
 
 const GlobalState = props => { 
-    const initialState = {
-        accounts: {
+    const data = localStorage.getItem("globalState");
+    let savedData = null;
+    if (data) { 
+        savedData = JSON.parse(data);
+    }
+
+    const initialState = savedData || { accounts: {
             1: {
                 id: 1,
                 type: "Debit",
@@ -72,7 +77,8 @@ const GlobalState = props => {
     };
 
     const [globalState, dispatch] = useReducer(trackerReducer, initialState);
-    // console.log(globalState);
+    
+    localStorage.setItem("globalState", JSON.stringify(globalState));
     return (
         <TrackerContext.Provider value={{
             globalState, 

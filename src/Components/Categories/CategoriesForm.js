@@ -12,7 +12,6 @@ const CategoriesForm = props => {
 
     useEffect(() => {
         if (props.category) {
-            // console.log(props.category)
             setType(props.category.type);
             setColor(props.category.color);
             setTitle(props.category.title);
@@ -84,28 +83,15 @@ const CategoriesForm = props => {
 
     return (
         <form onSubmit={action}>
-            <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" />
+            <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" />
 
             <label htmlFor="color">Color: </label>
             <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
 
-            {/* <label htmlFor="icon">Icon:</label>
-            <select id="icon" onChange={e => setIcon(e.target.value)}>
-                <option value="FaConnectdevelop">A</option>
-                <option value="FaDAndD">B</option>
-                <option value="FaDribbble">C</option>
-                <option value="FaFortAwesome">D</option>
-                <option value="FaJediOrder">E</option>
-                <option value="FaRebel">F</option>
-                <option value="FaBiohazard">G</option>
-                <option value="FaBowlingBall">H</option>
-                <option value="FaCarAlt">I</option>
-                <option value="FaGraduationCap">J</option>
-            </select>  */}
             <label htmlFor="icon">Icon:</label>
             <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
 
-            <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" />
+            <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
 
             <label htmlFor="dateCreate">Date</label>
             <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />

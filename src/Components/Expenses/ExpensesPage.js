@@ -32,10 +32,6 @@ const ExpensesPage = props => {
         global.dispatch({ type: DELETE_EXPENSE, expenseId })
     }
 
-    // useEffect(() => { 
-
-    // }, [categoryFilter, ])
-
     return (
         <div className="expenses-page">
             <label htmlFor="accountFilter">Account:</label>
