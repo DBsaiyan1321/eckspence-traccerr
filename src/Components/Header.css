@@ -1,0 +1,44 @@
+.header { 
+    height: fit-content;
+    padding: 15px 10px;
+    background-color: rgb(126, 100, 240);
+    /* background-color: rgb(37, 58, 173); */
+    display: flex;
+}
+
+.header-tabs { 
+    list-style: none;
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.logo-and-name { 
+    display: flex;
+    align-items: center;
+}
+
+.logo { 
+    color: white;
+    font-size: 36px;
+    margin: 0 10px 0 0;
+}
+
+.header-name {
+    text-transform: lowercase;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    color: white;
+    font-size: 32px;
+}
+
+.header-tab { 
+    font-size: 18px;
+    height: fit-content;
+    color: white;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-transform: lowercase;
+}
