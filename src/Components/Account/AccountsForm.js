@@ -8,7 +8,6 @@ const AccountsForm = props => {
     const [title, setTitle] = useState("");
     const [ownedCategories, setOwnedCategories] = useState([]);
     const [ownedExpenses, setOwnedExpenses] = useState([]);
-    // const [dateCreated, setDateCreated] = useState(false);
 
     useEffect(() => { 
         if (props.account) { 
@@ -18,45 +17,18 @@ const AccountsForm = props => {
             setOwnedCategories(props.account.ownedCategories);
             setOwnedExpenses(props.account.ownedExpenses);
             setIcon(props.account.icon);
-            // setDateCreated(!!props.account.date);
         } 
     }, [])
 
     const createAccount = e => {
         e.preventDefault();
-        
-        // var today = new Date();
-
-        // if (dateCreated) { 
-        //     var dd = String(today.getDate()).padStart(2, '0');
-        //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        //     var yyyy = today.getFullYear();
-
-        //     today = mm + '/' + dd + '/' + yyyy;
-        // } else { 
-        //     today = null;
-        // }
-
-        
+      
         let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
         props.addAccount(account);
     }
 
     const editAccount = e => { 
         e.preventDefault();
-        
-        // let today = new Date();
-
-        // if (dateCreated) {
-        //     const dd = String(today.getDate()).padStart(2, '0');
-        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        //     const yyyy = today.getFullYear();
-
-        //     today = mm + '/' + dd + '/' + yyyy;
-        // } else {
-        //     today = null;
-        // }
-
 
         let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
         props.editAccount(account);
@@ -94,9 +66,6 @@ const AccountsForm = props => {
             <label htmlFor="icon">Icon:
                 <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
             </label>
-
-            {/* <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
             <input className="button" type="submit" value={props.formType} />
             

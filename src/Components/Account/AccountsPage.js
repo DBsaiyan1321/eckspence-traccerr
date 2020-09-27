@@ -1,23 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "../../reset.css";
 import "./AccountsPage.css";
 import AccountsPageItem from "./AccountsPageItem";
 import AccountsForm from "./AccountsForm";
-import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
-import { ADD_ACCOUNT, ADD_ACCOUNTS, DELETE_ACCOUNT } from "../../Context/reducers";
+import { ADD_ACCOUNT, DELETE_ACCOUNT } from "../../Context/reducers";
 import uuid from "react-uuid";
 
-const AccountsPage = props => { 
-    const [accounts, setAccounts] = useState({});
+const AccountsPage = () => { 
     const global = useContext(TrackerContext);
-
-    // useEffect(() => { 
-    //     const data = localStorage.getItem("globalState");
-    //     if (data) { 
-    //         console.log(JSON.parse(data));
-    //     }
-    // }, []);
 
     const addAccount = account => { 
         global.dispatch({ type: ADD_ACCOUNT, account})

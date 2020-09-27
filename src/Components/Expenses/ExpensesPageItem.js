@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-// import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
 import ExpensesForm from "./ExpensesForm";
 
 const ExpensesPageItem = props => {
     const [edit, setEdit] = useState(false);
 
-    // let Icon = props.account.icon; 
     const divStyle = {
         backgroundColor: props.expense.color
     };
@@ -19,11 +17,10 @@ const ExpensesPageItem = props => {
     }
 
     return (
-        edit ?
+        edit 
+        ?
             <ExpensesForm formType="edit" id={props.expense.id} expense={props.expense} cancelEdit={cancelEdit} editExpense={props.editExpense} /> 
-            :
-            // <div className="expenses-page-item">
-            // <div style={divStyle} className="expenses-page-item">
+        :
             <div className="expenses-page-item">
                 <div className="buttons"> 
                     <button onClick={() => setEdit(!edit)} className="button">Edit</button>

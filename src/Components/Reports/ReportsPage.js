@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from "react"; 
+import React, { useContext, useState } from "react"; 
 import TrackerContext from "../../Context/TrackerContext";
 import "../../reset.css";
 import "./ReportsPage.css";
 import ReportsPageItem from "./ReportsPageItem";
-import ExpensesForm from "../Expenses/ExpensesForm";
-import uuid from "react-uuid";
-import { ADD_EXPENSE, ADD_EXPENSES, DELETE_EXPENSE } from "../../Context/reducers";
 
-
-const ReportsPage = props => { 
+const ReportsPage = () => { 
     const [startDay, setStartDay] = useState("");
     const [endDay, setEndDay] = useState("");
 
@@ -41,26 +37,6 @@ const ReportsPage = props => {
     let total = filteredExpense.filter(expense => expense.amount !== undefined).reduce((acc, curr) => { 
         return acc + parseFloat(curr.amount)
     }, 0)
-
-    ///////
-
-    const addExpense = expense => {
-        global.dispatch({ type: ADD_EXPENSE, expense })
-    }
-
-    const createExpense = () => {
-        let newId = uuid();
-        let expense = { id: newId, formType: "create" };
-        global.dispatch({ type: ADD_EXPENSE, expense })
-    }
-
-    const editExpense = expense => {
-        global.dispatch({ type: ADD_EXPENSE, expense })
-    }
-
-    const deleteExpense = expenseId => {
-        global.dispatch({ type: DELETE_EXPENSE, expenseId })
-    }
 
     return (
         <div className="expenses-page">

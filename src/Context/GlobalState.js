@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react"; 
+import React, { useReducer } from "react"; 
 import TrackerContext from "./TrackerContext";
 import { trackerReducer } from "./reducers";
 

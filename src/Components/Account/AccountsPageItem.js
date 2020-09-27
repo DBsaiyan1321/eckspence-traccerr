@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
 import AccountsForm from "./AccountsForm";
 import { IconPickerItem } from "react-fa-icon-picker";
 import { Link } from "react-router-dom";

@@ -1,10 +1,6 @@
-import React, { useState } from "react"; 
-import ExpensesForm from "../Expenses/ExpensesForm";
+import React from "react"; 
 
 const ReportsPageItem = props => { 
-    const [edit, setEdit] = useState(false);
-
-    // let Icon = props.account.icon; 
     const divStyle = {
         backgroundColor: props.expense.color
     };
@@ -12,10 +8,6 @@ const ReportsPageItem = props => {
     const catStyle = {
         color: props.expense.color
     };
-
-    const cancelEdit = () => {
-        setEdit(!edit);
-    }
 
     return (
         <div className="expenses-page-item">

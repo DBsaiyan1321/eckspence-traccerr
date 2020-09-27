@@ -12,12 +12,10 @@ const ExpensesForm = props => {
 
     useEffect(() => {
         if (props.expense) {
-            // console.log(props.expense)
             setAmount(props.expense.amount)
             setCategoryId(props.expense.categoryId);
             setAccountId(props.expense.accountId);
             setColor(props.expense.color)
-            // setDateCreated(!!props.expense.date);
             setDateCreated(props.expense.date);
         }
     }, [])
@@ -31,7 +29,6 @@ const ExpensesForm = props => {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
-        // today = mm + '/' + dd + '/' + yyyy;
         today = yyyy + "-" + mm + "-" + dd;
 
         let expense = { id: props.id, amount, date: today, categoryId, accountId, color };
@@ -40,19 +37,6 @@ const ExpensesForm = props => {
 
     const editExpense = e => {
         e.preventDefault();
-
-        // let today = new Date();
-
-        // if (dateCreated) {
-        //     const dd = String(today.getDate()).padStart(2, '0');
-        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        //     const yyyy = today.getFullYear();
-
-        //     today = mm + '/' + dd + '/' + yyyy;
-        // } else {
-        //     today = null;
-        // }
-
 
         let expense = { id: props.id, amount, date: dateCreated, categoryId, accountId, color };
         props.editExpense(expense);
@@ -84,9 +68,6 @@ const ExpensesForm = props => {
             </label>
 
             <input onChange={e => setAmount(e.target.value)} type="text" value={amount} placeholder="Amount" required="required" />
-
-            {/* <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
             <label htmlFor="accountId">Account:
                 <select id="accountId" onChange={e => setAccountId(e.target.value)} >

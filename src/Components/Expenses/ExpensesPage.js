@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../reset.css";
 import "./ExpensesPage.css";
 import ExpensesPageItem from "./ExpensesPageItem";
 import ExpensesForm from "./ExpensesForm";
-import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
-import { ADD_EXPENSE, ADD_EXPENSES, DELETE_EXPENSE } from "../../Context/reducers";
+import { ADD_EXPENSE, DELETE_EXPENSE } from "../../Context/reducers";
 import uuid from "react-uuid";
 
-const ExpensesPage = props => {
-    const [expenses, setExpenses] = useState({});
+const ExpensesPage = () => {
+    // const [expenses, setExpenses] = useState({}); // Just in case I wanted to change it to where we can pass expenses into it through props
     const [categoryFilter, setCategoryFilter] = useState("");
     const [accountFilter, setAccountFilter] = useState("");
     const global = useContext(TrackerContext);
