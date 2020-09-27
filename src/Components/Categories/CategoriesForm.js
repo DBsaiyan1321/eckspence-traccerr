@@ -3,23 +3,23 @@ import { IconPicker } from "react-fa-icon-picker";
 import TrackerContext from "../../Context/TrackerContext";
 
 const CategoriesForm = props => {
-    const [type, setType] = useState("");
+    // const [type, setType] = useState("");
     const [color, setColor] = useState("#f6b73c");
     const [icon, setIcon] = useState("");
     const [title, setTitle] = useState("");
-    const [accountId, setAccountId] = useState(1);
+    // const [accountId, setAccountId] = useState(1);
     const [ownedExpenses, setOwnedExpenses] = useState([]);
-    const [dateCreated, setDateCreated] = useState(false);
+    // const [dateCreated, setDateCreated] = useState(false);
 
     const global = useContext(TrackerContext);
 
     useEffect(() => {
         // debugger
         if (props.category) {
-            setType(props.category.type);
+            // setType(props.category.type);
             setColor(props.category.color);
             setTitle(props.category.title);
-            setAccountId(props.category.accountId);
+            // setAccountId(props.category.accountId);
             setOwnedExpenses(props.category.ownedExpenses);
             setIcon(props.category.icon)
             // setDateCreated(!!props.category.date);
@@ -29,40 +29,40 @@ const CategoriesForm = props => {
     const createCategory = e => {
         e.preventDefault();
 
-        var today = new Date();
+        // var today = new Date();
 
-        if (dateCreated) {
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
+        // if (dateCreated) {
+        //     var dd = String(today.getDate()).padStart(2, '0');
+        //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     var yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else {
-            today = null;
-        }
+        //     today = mm + '/' + dd + '/' + yyyy;
+        // } else {
+        //     today = null;
+        // }
 
 
-        let category = { id: props.id, type, color, icon, title, date: today, accountId, ownedExpenses };
+        let category = { id: props.id, color, icon, title, ownedExpenses };
         props.addCategory(category);
     }
 
     const editCategory = e => {
         e.preventDefault();
 
-        let today = new Date();
+        // let today = new Date();
 
-        if (dateCreated) {
-            const dd = String(today.getDate()).padStart(2, '0');
-            const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy = today.getFullYear();
+        // if (dateCreated) {
+        //     const dd = String(today.getDate()).padStart(2, '0');
+        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     const yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else {
-            today = null;
-        }
+        //     today = mm + '/' + dd + '/' + yyyy;
+        // } else {
+        //     today = null;
+        // }
 
 
-        let category = { id: props.id, type, color, icon, title, date: today, accountId, ownedExpenses };
+        let category = { id: props.id, color, icon, title, ownedExpenses };
         props.editCategory(category);
 
         props.cancelEdit();
@@ -85,11 +85,9 @@ const CategoriesForm = props => {
         action = editCategory;
     }
 
-    console.log(accountId)
-
     return (
         <form onSubmit={action}>
-            <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" />
+            {/* <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" /> */}
 
             <label htmlFor="color">Color: </label>
             <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
@@ -99,7 +97,7 @@ const CategoriesForm = props => {
 
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
 
-            <label htmlFor="accountId">Account</label>
+            {/* <label htmlFor="accountId">Account</label>
             <select id="accountId" onChange={e => setAccountId(e.target.value)}>
                 <option></option>
                 {
@@ -107,10 +105,10 @@ const CategoriesForm = props => {
                         return <option key={`{${accountId}`} value={global.globalState.accounts[accountId].id}>{`${global.globalState.accounts[accountId].title}`}</option>
                     })
                 }
-            </select> 
+            </select>  */}
 
-            <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />
+            {/* <label htmlFor="dateCreate">Date</label>
+            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
             <input type="submit" value={props.formType} />
 

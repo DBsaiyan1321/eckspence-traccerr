@@ -8,7 +8,7 @@ const AccountsForm = props => {
     const [title, setTitle] = useState("");
     const [ownedCategories, setOwnedCategories] = useState([]);
     const [ownedExpenses, setOwnedExpenses] = useState([]);
-    const [dateCreated, setDateCreated] = useState(false);
+    // const [dateCreated, setDateCreated] = useState(false);
 
     useEffect(() => { 
         if (props.account) { 
@@ -25,40 +25,40 @@ const AccountsForm = props => {
     const createAccount = e => {
         e.preventDefault();
         
-        var today = new Date();
+        // var today = new Date();
 
-        if (dateCreated) { 
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
+        // if (dateCreated) { 
+        //     var dd = String(today.getDate()).padStart(2, '0');
+        //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     var yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else { 
-            today = null;
-        }
+        //     today = mm + '/' + dd + '/' + yyyy;
+        // } else { 
+        //     today = null;
+        // }
 
         
-        let account = { id: props.id, type, color, icon, title, date: today, ownedCategories, ownedExpenses };
+        let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
         props.addAccount(account);
     }
 
     const editAccount = e => { 
         e.preventDefault();
         
-        let today = new Date();
+        // let today = new Date();
 
-        if (dateCreated) {
-            const dd = String(today.getDate()).padStart(2, '0');
-            const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy = today.getFullYear();
+        // if (dateCreated) {
+        //     const dd = String(today.getDate()).padStart(2, '0');
+        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     const yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else {
-            today = null;
-        }
+        //     today = mm + '/' + dd + '/' + yyyy;
+        // } else {
+        //     today = null;
+        // }
 
 
-        let account = { id: props.id, type, color, icon, title, date: today, ownedCategories, ownedExpenses };
+        let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
         props.editAccount(account);
 
         props.cancelEdit();
@@ -93,8 +93,8 @@ const AccountsForm = props => {
 
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
 
-            <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />
+            {/* <label htmlFor="dateCreate">Date</label>
+            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
             <input type="submit" value={props.formType} />
             

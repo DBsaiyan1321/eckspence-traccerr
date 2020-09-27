@@ -6,7 +6,7 @@ const ExpensesForm = props => {
     const [color, setColor] = useState("#fffaaa");
     const [categoryId, setCategoryId] = useState(1);
     const [accountId, setAccountId] = useState(1);
-    const [dateCreated, setDateCreated] = useState(false);
+    const [dateCreated, setDateCreated] = useState("");
 
     const global = useContext(TrackerContext);
 
@@ -18,6 +18,7 @@ const ExpensesForm = props => {
             setAccountId(props.expense.accountId);
             setColor(props.expense.color)
             // setDateCreated(!!props.expense.date);
+            setDateCreated(!!props.expense.date);
         }
     }, [])
 
@@ -26,16 +27,12 @@ const ExpensesForm = props => {
 
         var today = new Date();
 
-        if (dateCreated) {
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else {
-            today = null;
-        }
-
+        // today = mm + '/' + dd + '/' + yyyy;
+        today = yyyy + "-" + mm + "-" + dd;
 
         let expense = { id: props.id, amount, date: today, categoryId, accountId, color };
         props.addExpense(expense);
@@ -44,20 +41,20 @@ const ExpensesForm = props => {
     const editExpense = e => {
         e.preventDefault();
 
-        let today = new Date();
+        // let today = new Date();
 
-        if (dateCreated) {
-            const dd = String(today.getDate()).padStart(2, '0');
-            const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy = today.getFullYear();
+        // if (dateCreated) {
+        //     const dd = String(today.getDate()).padStart(2, '0');
+        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     const yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-        } else {
-            today = null;
-        }
+        //     today = mm + '/' + dd + '/' + yyyy;
+        // } else {
+        //     today = null;
+        // }
 
 
-        let expense = { id: props.id, amount, date: today, categoryId, accountId, color };
+        let expense = { id: props.id, amount, date: dateCreated, categoryId, accountId, color };
         props.editExpense(expense);
 
         props.cancelEdit();
@@ -87,8 +84,8 @@ const ExpensesForm = props => {
 
             <input onChange={e => setAmount(e.target.value)} type="text" value={amount} placeholder="Amount" required="required" />
 
-            <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />
+            {/* <label htmlFor="dateCreate">Date</label>
+            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
             <label htmlFor="accountId">Account</label>
             <select id="accountId" onChange={e => setAccountId(e.target.value)} >

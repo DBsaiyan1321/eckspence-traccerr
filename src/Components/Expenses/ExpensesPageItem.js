@@ -19,7 +19,7 @@ const ExpensesPageItem = props => {
             <ExpensesForm formType="edit" id={props.expense.id} expense={props.expense} cancelEdit={cancelEdit} editExpense={props.editExpense} /> 
             :
             <div style={divStyle} className="expenses-page-item">
-                <h1>{props.expense.amount}</h1>
+                <h1>{`$${props.expense.amount}`}</h1>
                 <p>{props.expense.date}</p>
                 <p>{props.category}</p>
                 <p>{props.account}</p>

@@ -15,12 +15,11 @@ const CategoriesPageItem = props => {
 
     return (
         edit ?
-            <CategoriesForm formType="edit" id={props.category.id} category={props.category} cancelEdit={cancelEdit} editCategory={props.editCategory} /> :
+            <CategoriesForm formType="edit" id={props.category.id} category={props.category} cancelEdit={cancelEdit} editCategory={props.editCategory} /> 
+            :
             <div style={divStyle}>
                 <div className="categoryIcon"><IconPickerItem icon={`${props.category.icon}`} /></div>
                 <h1>{props.category.title}</h1>
-                <h2>{props.category.type}</h2>
-                <p>{props.category.date}</p>
                 <button onClick={() => setEdit(!edit)}>Edit</button>
                 <button onClick={() => props.deleteCategory(props.category.id)}>Delete</button>
             </div>
