@@ -7,28 +7,28 @@ const Footer = props => {
         <div className="footer">
             <ul className="footer-list">
                 <li className="footer-list-title">Hobbies</li>
-                <li className="footer-list-item">Tennis</li>
-                <li className="footer-list-item">Programming</li>
-                <li className="footer-list-item">Illustration</li>
+                <li className="footer-list-item-not-link">Tennis</li>
+                <li className="footer-list-item-not-link">Programming</li>
+                <li className="footer-list-item-not-link">Illustration</li>
             </ul>
             <ul className="footer-list">
                 <li className="footer-list-title">Favorite Resources</li>
-                <li className="footer-list-item">YouTube</li>
-                <li className="footer-list-item">Stack Overflow</li>
-                <li className="footer-list-item">React Documentation</li>
-                <li className="footer-list-item">Leetcode</li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" className="footer-list-item">YouTube</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/" className="footer-list-item">Stack Overflow</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/" className="footer-list-item">React Documentation</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://leetcode.com/" className="footer-list-item">Leetcode</a></li>
             </ul>
             <ul className="footer-list">
                 <li className="footer-list-title">Check Me Out</li>
-                <li className="footer-list-item">Github</li>
-                <li className="footer-list-item">LinkedIn</li>
-                <li className="footer-list-item">Portfolio</li>
-                <li className="footer-list-item">AngelList</li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/DBsaiyan1321" className="footer-list-item">Github</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dorian-izaiah-brown-1430b3193/" className="footer-list-item">LinkedIn</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://dbsaiyan1321.github.io/portfolio-site/" className="footer-list-item">Portfolio</a></li>
+                <li className="footer-list-item"><a target="_blank" rel="noopener noreferrer" href="https://angel.co/u/dorian-izaiah-brown" className="footer-list-item">AngelList</a></li>
             </ul>
             <ul className="footer-list">
                 <li className="footer-list-title">Contact Info</li>
-                <li className="footer-list-item">devorian143@gmail.com</li>
-                <li className="footer-list-item">(707)718-7566</li>
+                <li className="footer-list-item-not-link">devorian143@gmail.com</li>
+                <li className="footer-list-item-not-link">(707)718-7566</li>
             </ul>
         </div>  
     )

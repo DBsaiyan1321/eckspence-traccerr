@@ -19,7 +19,7 @@
     margin-bottom: 13px;
 }
 
-.footer-list-item { 
+.footer-list-item, .footer-list-item-not-link { 
     color: white;
     letter-spacing: 0.5px;
     margin-bottom: 7px;

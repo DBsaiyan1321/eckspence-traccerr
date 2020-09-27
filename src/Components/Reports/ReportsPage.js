@@ -14,7 +14,6 @@ const ReportsPage = props => {
 
     const global = useContext(TrackerContext);
     
-    console.log(global)
     let expenses = Object.values(global.globalState.expenses);
 
     let filteredStartDayExpenses;

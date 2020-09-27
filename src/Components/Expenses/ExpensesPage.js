@@ -13,7 +13,7 @@ const ExpensesPage = props => {
     const [categoryFilter, setCategoryFilter] = useState("");
     const [accountFilter, setAccountFilter] = useState("");
     const global = useContext(TrackerContext);
-    console.log(global)
+    
 
     const addExpense = expense => {
         global.dispatch({ type: ADD_EXPENSE, expense })

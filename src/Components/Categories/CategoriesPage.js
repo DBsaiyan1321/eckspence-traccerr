@@ -19,7 +19,7 @@ const CategoriesPage = props => {
     //     }
     // }, [])
 
-    console.log(global.globalState.categories)
+
 
     const addCategory = category => {
         global.dispatch({ type: ADD_CATEGORY, category })

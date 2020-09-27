@@ -22,7 +22,9 @@ function App() {
           <Route exact path="/categories/:filters" component={CategoriesPage} />
           <Route exact path="/expenses" component={ExpensesPage} />
           <Route exact path="/expenses/:filters" component={ExpensesPage} />
-          <Route exact path="*" component={Dashboard} />
+          {/* <Route exact path="*" component={Dashboard} /> */}
+          <Route exact path="/" component={ExpensesPage} />
+          <Route exact path="*" component={ExpensesPage} />
         </Switch>
         <Footer />
       </HashRouter>
