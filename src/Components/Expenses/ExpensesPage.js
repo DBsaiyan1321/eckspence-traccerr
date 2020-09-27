@@ -6,6 +6,7 @@ import ExpensesForm from "./ExpensesForm";
 import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
 import { ADD_EXPENSE, ADD_EXPENSES, DELETE_EXPENSE } from "../../Context/reducers";
+import uuid from "react-uuid";
 
 const ExpensesPage = props => {
     const [expenses, setExpenses] = useState({});
@@ -19,7 +20,7 @@ const ExpensesPage = props => {
     }
 
     const createExpense = () => {
-        let newId = Object.keys(global.globalState.expenses).length + 1;
+        let newId = uuid();
         let expense = { id: newId, formType: "create" };
         global.dispatch({ type: ADD_EXPENSE, expense })
     }
@@ -34,26 +35,34 @@ const ExpensesPage = props => {
 
     return (
         <div className="expenses-page">
-            <label htmlFor="accountFilter">Account:</label>
-            <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
-                <option value=""></option>
-                {
-                    Object.keys(global.globalState.accounts).map(accountId => {
-                        return <option key={`{${accountId}`} value={`${global.globalState.accounts[accountId].title}`}>{`${global.globalState.accounts[accountId].title}`}</option>
-                    })
-                }
-            </select> 
+            <h1>Expenses</h1>
+            <div className="filters"> 
+                <label htmlFor="accountFilter">
+                    Account:
+                    <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
+                        <option value=""></option>
+                        {
+                            Object.keys(global.globalState.accounts).map(accountId => {
+                                return <option key={`{${accountId}`} value={`${global.globalState.accounts[accountId].title}`}>{`${global.globalState.accounts[accountId].title}`}</option>
+                            })
+                        }
+                    </select>
+                </label>
 
-            <label htmlFor="categoryFilter">Category:</label>
-            <select id="categoryFilter" onChange={e => setCategoryFilter(e.target.value)} value={categoryFilter}>
-                <option value=""></option>
-                { 
-                Object.keys(global.globalState.categories).map(categoryId => { 
-                    return <option key={`{${categoryId}`} value={`${global.globalState.categories[categoryId].title}`}>{`${global.globalState.categories[categoryId].title}`}</option>
-                })
-                }
-            </select> 
+                <label htmlFor="categoryFilter">
+                    Category:
+                    <select id="categoryFilter" onChange={e => setCategoryFilter(e.target.value)} value={categoryFilter}>
+                        <option value=""></option>
+                        {
+                            Object.keys(global.globalState.categories).map(categoryId => {
+                                return <option key={`{${categoryId}`} value={`${global.globalState.categories[categoryId].title}`}>{`${global.globalState.categories[categoryId].title}`}</option>
+                            })
+                        }
+                    </select> 
+                </label>
+            </div>
 
+            <ul className="expenses-page-list">
             {
                 Object.keys(global.globalState.expenses).map(expenseId => {
                     let expense = global.globalState.expenses[expenseId];
@@ -80,8 +89,9 @@ const ExpensesPage = props => {
                         null
                 })
             }
+            </ul>
 
-            <button onClick={createExpense}>New Expense</button>
+            <button className="new-button" onClick={createExpense}>New Expense</button>
         </div>
     )
 };
