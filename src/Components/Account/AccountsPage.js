@@ -6,6 +6,7 @@ import AccountsForm from "./AccountsForm";
 import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
 import { ADD_ACCOUNT, ADD_ACCOUNTS, DELETE_ACCOUNT } from "../../Context/reducers";
+import uuid from "react-uuid";
 
 const AccountsPage = props => { 
     const [accounts, setAccounts] = useState({});
@@ -23,7 +24,7 @@ const AccountsPage = props => {
     }
 
     const createAccount = () => { 
-        let newId = Object.keys(global.globalState.accounts).length + 1;
+        let newId = uuid();
         let account = { id: newId, formType: "create" };
         global.dispatch({ type: ADD_ACCOUNT, account })
     }
@@ -40,7 +41,7 @@ const AccountsPage = props => {
         
             <div className="accounts-page">
                 <h1>Accounts</h1> 
-                <ul>
+                <ul className="accounts-page-list">
                     {
                         Object.keys(global.globalState.accounts).map(accountId => {
                             let account = global.globalState.accounts[accountId];
@@ -64,7 +65,7 @@ const AccountsPage = props => {
                     }
                 </ul>
 
-                <button onClick={createAccount}>New Account</button>
+                <button className="new-button" onClick={createAccount}>New Account</button>
             </div>
     )
 };
