@@ -91,7 +91,7 @@ const ExpensesForm = props => {
             <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />
 
             <label htmlFor="accountId">Account</label>
-            <select id="accountId" onChange={e => setAccountId(e.target.value)}>
+            <select id="accountId" onChange={e => setAccountId(e.target.value)} >
                 {
                     Object.keys(global.globalState.accounts).map(accountId => {
                         return <option key={`{${accountId}`} value={accountId}>{`${global.globalState.accounts[accountId].title}`}</option>

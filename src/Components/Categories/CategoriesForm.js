@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { IconPicker } from "react-fa-icon-picker";
+import TrackerContext from "../../Context/TrackerContext";
 
 const CategoriesForm = props => {
     const [type, setType] = useState("");
     const [color, setColor] = useState("#f6b73c");
     const [icon, setIcon] = useState("");
     const [title, setTitle] = useState("");
-    const [ownedCategories, setOwnedCategories] = useState([]);
+    const [accountId, setAccountId] = useState(1);
     const [ownedExpenses, setOwnedExpenses] = useState([]);
     const [dateCreated, setDateCreated] = useState(false);
 
+    const global = useContext(TrackerContext);
+
     useEffect(() => {
+        // debugger
         if (props.category) {
             setType(props.category.type);
             setColor(props.category.color);
             setTitle(props.category.title);
-            setOwnedCategories(props.category.ownedCategories);
+            setAccountId(props.category.accountId);
             setOwnedExpenses(props.category.ownedExpenses);
             setIcon(props.category.icon)
             // setDateCreated(!!props.category.date);
@@ -38,7 +42,7 @@ const CategoriesForm = props => {
         }
 
 
-        let category = { id: props.id, type, color, icon, title, date: today, ownedCategories, ownedExpenses };
+        let category = { id: props.id, type, color, icon, title, date: today, accountId, ownedExpenses };
         props.addCategory(category);
     }
 
@@ -58,7 +62,7 @@ const CategoriesForm = props => {
         }
 
 
-        let category = { id: props.id, type, color, icon, title, date: today, ownedCategories, ownedExpenses };
+        let category = { id: props.id, type, color, icon, title, date: today, accountId, ownedExpenses };
         props.editCategory(category);
 
         props.cancelEdit();
@@ -81,6 +85,8 @@ const CategoriesForm = props => {
         action = editCategory;
     }
 
+    console.log(accountId)
+
     return (
         <form onSubmit={action}>
             <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" />
@@ -92,6 +98,16 @@ const CategoriesForm = props => {
             <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
 
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
+
+            <label htmlFor="accountId">Account</label>
+            <select id="accountId" onChange={e => setAccountId(e.target.value)}>
+                <option></option>
+                {
+                    Object.keys(global.globalState.accounts).map(accountId => {
+                        return <option key={`{${accountId}`} value={global.globalState.accounts[accountId].id}>{`${global.globalState.accounts[accountId].title}`}</option>
+                    })
+                }
+            </select> 
 
             <label htmlFor="dateCreate">Date</label>
             <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" />

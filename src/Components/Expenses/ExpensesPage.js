@@ -35,7 +35,7 @@ const ExpensesPage = props => {
     return (
         <div className="expenses-page">
             <label htmlFor="accountFilter">Account:</label>
-            <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)}>
+            <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
                 <option value=""></option>
                 {
                     Object.keys(global.globalState.accounts).map(accountId => {
@@ -45,7 +45,7 @@ const ExpensesPage = props => {
             </select> 
 
             <label htmlFor="categoryFilter">Category:</label>
-            <select id="categoryFilter" onChange={e => setCategoryFilter(e.target.value)}>
+            <select id="categoryFilter" onChange={e => setCategoryFilter(e.target.value)} value={categoryFilter}>
                 <option value=""></option>
                 { 
                 Object.keys(global.globalState.categories).map(categoryId => { 
