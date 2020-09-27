@@ -5,6 +5,7 @@ import CategoriesPageItem from "./CategoriesPageItem";
 import Header from "../Header";
 import CategoriesForm from "./CategoriesForm";
 import "./CategoriesPage.css";
+import uuid from "react-uuid";
 
 const CategoriesPage = props => { 
     const [categories, setCategories] = useState({});
@@ -25,7 +26,7 @@ const CategoriesPage = props => {
     }
     // console.log(props.match.params.filters)
     const createCategory = () => {
-        let newId = Object.keys(global.globalState.categories).length + 1;
+        let newId = uuid();
         let category = { id: newId, formType: "create" };
         global.dispatch({ type: ADD_CATEGORY, category })
     }

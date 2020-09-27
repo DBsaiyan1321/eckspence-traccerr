@@ -38,9 +38,9 @@ const AccountsPageItem = props => {
                 <div className="colored-bar" style={divStyle}></div>
                 <div className="accounts-page-item-info"> 
                     <div className="account-page-item-tit-and-typ"> 
-                        <Link className="accounts-page-item-title" to={`/categories/${props.account.title}`}>
+                        {/* <Link className="accounts-page-item-title" to={`/categories/${props.account.title}`}> */}
                             <h1>{props.account.title}</h1>
-                        </Link>
+                        {/* </Link> */}
                         <h2 style={typeStyle} className="accounts-page-item-type">{props.account.type}</h2>
                     </div>
                 </div>
