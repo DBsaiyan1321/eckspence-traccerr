@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/eckspence-traccerr/static/css/main.d42557a1.chunk.css",
+    "main.js": "/eckspence-traccerr/static/js/main.e976e222.chunk.js",
+    "main.js.map": "/eckspence-traccerr/static/js/main.e976e222.chunk.js.map",
+    "runtime-main.js": "/eckspence-traccerr/static/js/runtime-main.3b887760.js",
+    "runtime-main.js.map": "/eckspence-traccerr/static/js/runtime-main.3b887760.js.map",
+    "static/js/2.5c39a16f.chunk.js": "/eckspence-traccerr/static/js/2.5c39a16f.chunk.js",
+    "static/js/2.5c39a16f.chunk.js.map": "/eckspence-traccerr/static/js/2.5c39a16f.chunk.js.map",
+    "index.html": "/eckspence-traccerr/index.html",
+    "precache-manifest.735d4be9243c25436a5da208105eb9e9.js": "/eckspence-traccerr/precache-manifest.735d4be9243c25436a5da208105eb9e9.js",
+    "service-worker.js": "/eckspence-traccerr/service-worker.js",
+    "static/css/main.d42557a1.chunk.css.map": "/eckspence-traccerr/static/css/main.d42557a1.chunk.css.map",
+    "static/js/2.5c39a16f.chunk.js.LICENSE.txt": "/eckspence-traccerr/static/js/2.5c39a16f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3b887760.js",
+    "static/js/2.5c39a16f.chunk.js",
+    "static/css/main.d42557a1.chunk.css",
+    "static/js/main.e976e222.chunk.js"
+  ]
+}
