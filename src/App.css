@@ -1,3 +1,8 @@
+#root { 
+  /* background-color: #84eeff; */
+  background-color: rgb(126, 100, 240);
+}
+
 .App {
   text-align: center;
 }
