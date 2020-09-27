@@ -86,16 +86,18 @@ const CategoriesForm = props => {
     }
 
     return (
-        <form onSubmit={action}>
+        <form className="form" onSubmit={action}>
             {/* <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" /> */}
 
-            <label htmlFor="color">Color: </label>
-            <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
-
-            <label htmlFor="icon">Icon:</label>
-            <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
-
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
+
+            <label htmlFor="color">Color: 
+                <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
+            </label>
+
+            <label htmlFor="icon">Icon:
+                <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
+            </label>
 
             {/* <label htmlFor="accountId">Account</label>
             <select id="accountId" onChange={e => setAccountId(e.target.value)}>
@@ -110,12 +112,12 @@ const CategoriesForm = props => {
             {/* <label htmlFor="dateCreate">Date</label>
             <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
 
-            <input type="submit" value={props.formType} />
+            <input className="button" type="submit" value={props.formType} />
 
             {
                 props.formType === "create" ?
-                    <button onClick={cancelCreate}>Cancel</button> :
-                    <button onClick={cancelEdit}>Cancel</button>
+                    <button className="button" onClick={cancelCreate}>Cancel</button> :
+                    <button className="button" onClick={cancelEdit}>Cancel</button>
             }
         </form>
     )

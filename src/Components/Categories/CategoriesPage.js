@@ -40,7 +40,7 @@ const CategoriesPage = props => {
 
     // console.log(accountFilter)
     return ( 
-        <div>
+        <div className="categories-page">
             {/* <label htmlFor="accountFilter">Account:</label>
                 <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
                 <option value=""></option>
@@ -50,6 +50,8 @@ const CategoriesPage = props => {
                     })
                 }
             </select>  */}
+            <h1>Categories</h1>
+            <ul className="categories-page-list">
             {
                 Object.keys(global.globalState.categories).map(categoryId => {
                     let category = global.globalState.categories[categoryId];
@@ -72,8 +74,9 @@ const CategoriesPage = props => {
                         /> 
                 })
             }
+            </ul>
 
-            <button onClick={createCategory}>New category</button>
+            <button className="new-button" onClick={createCategory}>New category</button>
         </div>
     ) 
 };
