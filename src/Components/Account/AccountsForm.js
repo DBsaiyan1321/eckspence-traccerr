@@ -6,7 +6,6 @@ const AccountsForm = props => {
     const [color, setColor] = useState("#f6b73c");
     const [icon, setIcon] = useState("");
     const [title, setTitle] = useState("");
-    const [ownedCategories, setOwnedCategories] = useState([]);
     const [ownedExpenses, setOwnedExpenses] = useState([]);
 
     useEffect(() => { 
@@ -14,7 +13,6 @@ const AccountsForm = props => {
             setType(props.account.type);
             setColor(props.account.color);
             setTitle(props.account.title);
-            setOwnedCategories(props.account.ownedCategories);
             setOwnedExpenses(props.account.ownedExpenses);
             setIcon(props.account.icon);
         } 
@@ -23,14 +21,14 @@ const AccountsForm = props => {
     const createAccount = e => {
         e.preventDefault();
       
-        let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
+        let account = { id: props.id, type, color, icon, title, ownedExpenses };
         props.addAccount(account);
     }
 
     const editAccount = e => { 
         e.preventDefault();
 
-        let account = { id: props.id, type, color, icon, title, ownedCategories, ownedExpenses };
+        let account = { id: props.id, type, color, icon, title, ownedExpenses };
         props.editAccount(account);
 
         props.cancelEdit();
@@ -59,11 +57,11 @@ const AccountsForm = props => {
  
             <input onChange={e => setType(e.target.value)} type="text" value={type} placeholder="Type" required="required" />
             
-            <label htmlFor="color">Color: 
-                <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value) } />
+            <label>Color: 
+                <input type="color" name="color" value={color} onChange={e => setColor(e.target.value) } />
             </label>
 
-            <label htmlFor="icon">Icon:
+            <label>Icon:
                 <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
             </label>
 

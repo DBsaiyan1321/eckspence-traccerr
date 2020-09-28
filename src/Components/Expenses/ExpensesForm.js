@@ -64,14 +64,15 @@ const ExpensesForm = props => {
     
     return (
         <form className="form" onSubmit={action}>
-            <label htmlFor="color">Color: 
-                <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
+            <label>Color: 
+                <input type="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
             </label>
 
             <input onChange={e => setAmount(e.target.value)} type="text" value={amount} placeholder="Amount" required="required" />
 
-            <label htmlFor="accountId">Account:
-                <select id="accountId" onChange={e => setAccountId(e.target.value)} >
+            <label>Account:
+                <select onChange={e => setAccountId(e.target.value)} required>
+                    <option value=""></option>
                     {
                         Object.keys(global.globalState.accounts).map(accountId => {
                             return <option key={`{${accountId}`} value={accountId}>{`${global.globalState.accounts[accountId].title}`}</option>
@@ -80,8 +81,9 @@ const ExpensesForm = props => {
                 </select> 
             </label>
 
-            <label htmlFor="categoryId">Category: 
-                <select id="categoryId" onChange={e => setCategoryId(e.target.value)}>
+            <label>Category: 
+                <select onChange={e => setCategoryId(e.target.value)} required>
+                    <option value=""></option>
                     {
                         Object.keys(global.globalState.categories).map(categoryId => {
                             return <option key={`{${categoryId}`} value={categoryId}>{`${global.globalState.categories[categoryId].title}`}</option>

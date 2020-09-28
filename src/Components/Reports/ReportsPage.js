@@ -72,18 +72,18 @@ const ReportsPage = () => {
 
             <ul className="reports-list">
                 {type === "daily" ? <li onClick={() => setType("daily")} className="reports-tab underline">Daily</li> : <li onClick={() => setType("daily")} className="reports-tab">Daily</li> }
-                <li onClick={() => setType("weekly")} className="reports-tab">Weekly</li>
-                <li onClick={() => setType("monthly")} className="reports-tab">Monthly</li>
-                <li onClick={() => setType("custom")} className="reports-tab">Custom</li>
+                {type === "weekly" ? <li onClick={() => setType("weekly")} className="reports-tab underline">Weekly</li> : <li onClick={() => setType("weekly")} className="reports-tab">Weekly</li>}
+                {type === "monthly" ? <li onClick={() => setType("monthly")} className="reports-tab underline">Monthly</li> : <li onClick={() => setType("monthly")} className="reports-tab">Monthly</li>}
+                {type === "custom" ? <li onClick={() => setType("custom")} className="reports-tab underline">Custom</li> : <li onClick={() => setType("custom")} className="reports-tab">Custom</li>}
             </ul>
             <div className="filters">
-                <label htmlFor="startDay">Start Day:
-                    <input id="startDay" type="date" value={startDay} onChange={e => setStartDay(e.target.value)} />
+                <label>Start Day:
+                    <input type="date" value={startDay} onChange={e => setStartDay(e.target.value)} />
                 </label>
 
                 { type === "custom" ? 
-                    <label htmlFor="endDay">End Day:
-                    <input id="endDay" type="date" value={endDay} onChange={e => setEndDay(e.target.value)} />
+                    <label>End Day:
+                        <input type="date" value={endDay} onChange={e => setEndDay(e.target.value)} />
                     </label> : null
                 }
             </div>

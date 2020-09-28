@@ -53,12 +53,12 @@ const CategoriesForm = props => {
         <form className="form" onSubmit={action}>
             <input onChange={e => setTitle(e.target.value)} type="text" value={title} placeholder="Title" required="required" />
 
-            <label htmlFor="color">Color: 
-                <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
+            <label>Color: 
+                <input type="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
             </label>
 
-            <label htmlFor="icon">Icon:
-                <IconPicker id="icon" value={icon} onChange={icon => setIcon(icon)} />
+            <label>Icon:
+                <IconPicker value={icon} onChange={icon => setIcon(icon)} />
             </label>
 
             <input className="button" type="submit" value={props.formType} />
