@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/eckspence-traccerr/precache-manifest.0104b0bc4b4eaa7bc4cb5b801ab665a5.js"
+  "/eckspence-traccerr/precache-manifest.426001aef553cd9c0e838f41a64ba52b.js"
 );
 
 self.addEventListener('message', (event) => {
