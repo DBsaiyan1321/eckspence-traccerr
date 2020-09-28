@@ -47,7 +47,9 @@
 }
 
 .accounts-page-item-title { 
-    font-size: 24px;
+    font-size: 32px;
+    color: black;
+    font-weight: 400;
 }
 
 .accounts-page-item-type { 
@@ -67,9 +69,11 @@
 
 .buttons { 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
     left: 15px;
+    width: 70px;
+    justify-content: space-around;
 }
 
 .button { 
@@ -97,6 +101,8 @@
     letter-spacing: 1px;
     cursor: pointer;
     transition: background-color .18s ease-in-out;
+    outline: none;
+    margin-bottom: 10px;
 }
 
 .new-button:hover { 
@@ -112,4 +118,8 @@
     border-left: none;
     border-right: none;
     justify-content: space-evenly;
+}
+
+.icon { 
+    font-size: 20px
 }

@@ -76,7 +76,7 @@
 
 .buttons { 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
     left: 15px;
 }
@@ -106,6 +106,8 @@
     letter-spacing: 1px;
     cursor: pointer;
     transition: background-color .18s ease-in-out;
+    outline: none;
+    margin-bottom: 10px;
 }
 
 .new-button:hover { 
@@ -121,4 +123,8 @@
     border-left: none;
     border-right: none;
     justify-content: space-evenly;
+}
+
+.icon { 
+    font-size: 20px
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import TrackerContext from "../../Context/TrackerContext";
+import "./ExpensesPage.css";
 
 const ExpensesForm = props => {
     const [amount, setAmount] = useState("");
