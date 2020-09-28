@@ -36,13 +36,12 @@ const CategoriesPageItem = props => {
                 <div className="colored-bar" style={divStyle}></div>
                 <div className="categories-page-item-info">
                     <div className="categories-page-item-tit-and-typ">
-                        <Link to={`/expenses/category-${props.category.title}`}>
-                            <h1 className="categories-page-item-title">{props.category.title}</h1>
-                        </Link>
-                        {/* <h1 className="categories-page-item-title">{props.category.title}</h1>                     */}
+                        <h1 className="categories-page-item-title">{props.category.title}</h1>
+                        
                     </div>
                 </div>
                 <IconPickerItem icon={`${props.category.icon}`} containerStyles={iconStyle} />
+                <Link to={`/expenses/category-${props.category.title}`} className="link-to-expenses"></Link>
             </li>
     )
 };  
