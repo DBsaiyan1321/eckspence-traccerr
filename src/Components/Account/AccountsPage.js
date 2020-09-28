@@ -29,7 +29,7 @@ const AccountsPage = () => {
     }
 
     return (
-        
+        <div className="accounts-page-container">
             <div className="accounts-page">
                 <h1>Accounts</h1> 
                 <ul className="accounts-page-list">
@@ -58,6 +58,7 @@ const AccountsPage = () => {
 
                 <button className="new-button" onClick={createAccount}>New Account</button>
             </div>
+        </div >
     )
 };
 

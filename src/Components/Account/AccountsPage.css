@@ -1,3 +1,8 @@
+.accounts-page-container { 
+  display: flex;
+  justify-content: center;
+}
+
 .accounts-page {
     list-style: none;
     min-height: 80vh;
@@ -5,6 +10,8 @@
     background-color: rgb(255, 255, 255);
     margin: 15px;
     padding: 5px 20px;
+    max-width: 1100px;
+    width: 100vw;
 }
 
 .accounts-page-list { 
