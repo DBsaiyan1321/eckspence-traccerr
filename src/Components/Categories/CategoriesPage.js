@@ -28,33 +28,35 @@ const CategoriesPage = () => {
     }
 
     return ( 
-        <div className="categories-page">
-            <h1>Categories</h1>
-            <ul className="categories-page-list">
-            {
-                Object.keys(global.globalState.categories).map(categoryId => {
-                    let category = global.globalState.categories[categoryId];
-                    return category.formType === "create"
-                        ?
-                        <CategoriesForm
-                            key={category.id}
-                            addCategory={addCategory}
-                            id={category.id}
-                            formType={category.formType}
-                            deleteCategory={deleteCategory}
-                        />
-                        :
-                        <CategoriesPageItem
-                            key={category.id}
-                            category={category}
-                            deleteCategory={deleteCategory}
-                            editCategory={editCategory}
-                        /> 
-                })
-            }
-            </ul>
+        <div className="categories-page-container">
+            <div className="categories-page">
+                <h1>Categories</h1>
+                <ul className="categories-page-list">
+                {
+                    Object.keys(global.globalState.categories).map(categoryId => {
+                        let category = global.globalState.categories[categoryId];
+                        return category.formType === "create"
+                            ?
+                            <CategoriesForm
+                                key={category.id}
+                                addCategory={addCategory}
+                                id={category.id}
+                                formType={category.formType}
+                                deleteCategory={deleteCategory}
+                            />
+                            :
+                            <CategoriesPageItem
+                                key={category.id}
+                                category={category}
+                                deleteCategory={deleteCategory}
+                                editCategory={editCategory}
+                            /> 
+                    })
+                }
+                </ul>
 
-            <button className="new-button" onClick={createCategory}>New category</button>
+                <button className="new-button" onClick={createCategory}>New category</button>
+            </div>
         </div>
     ) 
 };

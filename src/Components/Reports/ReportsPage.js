@@ -7,7 +7,7 @@ import ReportsPageItem from "./ReportsPageItem";
 const ReportsPage = () => { 
     const [startDay, setStartDay] = useState("");
     const [endDay, setEndDay] = useState("");
-    const [type, setType] = useState("");
+    const [type, setType] = useState("daily");
 
     const global = useContext(TrackerContext);
     
@@ -67,43 +67,45 @@ const ReportsPage = () => {
     }, 0).toFixed(2);
 
     return (
-        <div className="expenses-page">
-            <h1>Reports</h1>
+        <div className="reports-page-container">
+            <div className="reports-page">
+                <h1>Reports</h1>
 
-            <ul className="reports-list">
-                {type === "daily" ? <li onClick={() => setType("daily")} className="reports-tab underline">Daily</li> : <li onClick={() => setType("daily")} className="reports-tab">Daily</li> }
-                {type === "weekly" ? <li onClick={() => setType("weekly")} className="reports-tab underline">Weekly</li> : <li onClick={() => setType("weekly")} className="reports-tab">Weekly</li>}
-                {type === "monthly" ? <li onClick={() => setType("monthly")} className="reports-tab underline">Monthly</li> : <li onClick={() => setType("monthly")} className="reports-tab">Monthly</li>}
-                {type === "custom" ? <li onClick={() => setType("custom")} className="reports-tab underline">Custom</li> : <li onClick={() => setType("custom")} className="reports-tab">Custom</li>}
-            </ul>
-            <div className="filters">
-                <label>Start Day:
-                    <input type="date" value={startDay} onChange={e => setStartDay(e.target.value)} />
-                </label>
+                <ul className="reports-list">
+                    {type === "daily" ? <li onClick={() => setType("daily")} className="reports-tab underline">Daily</li> : <li onClick={() => setType("daily")} className="reports-tab">Daily</li> }
+                    {type === "weekly" ? <li onClick={() => setType("weekly")} className="reports-tab underline">Weekly</li> : <li onClick={() => setType("weekly")} className="reports-tab">Weekly</li>}
+                    {type === "monthly" ? <li onClick={() => setType("monthly")} className="reports-tab underline">Monthly</li> : <li onClick={() => setType("monthly")} className="reports-tab">Monthly</li>}
+                    {type === "custom" ? <li onClick={() => setType("custom")} className="reports-tab underline">Custom</li> : <li onClick={() => setType("custom")} className="reports-tab">Custom</li>}
+                </ul>
+                <div className="filters">
+                    <label>Start Day:
+                        <input type="date" value={startDay} onChange={e => setStartDay(e.target.value)} />
+                    </label>
 
-                { type === "custom" ? 
-                    <label>End Day:
-                        <input type="date" value={endDay} onChange={e => setEndDay(e.target.value)} />
-                    </label> : null
-                }
+                    { type === "custom" ? 
+                        <label>End Day:
+                            <input type="date" value={endDay} onChange={e => setEndDay(e.target.value)} />
+                        </label> : null
+                    }
+                </div>
+
+                <h1>{`$${total}`}</h1>
+
+                <ul className="reports-page-list">
+                    {
+                        filteredExpense.map(expense => {
+                            return expense.amount !== undefined ? 
+                                <ReportsPageItem key={expense.id}
+                                    expense={expense}
+                                    category={global.globalState.categories[expense.categoryId].title}
+                                    account={global.globalState.accounts[expense.accountId].title}
+                                    />
+                                    : null
+                        })
+                    }
+                </ul>
+
             </div>
-
-            <h1>{`$${total}`}</h1>
-
-            <ul className="expenses-page-list">
-                {
-                    filteredExpense.map(expense => {
-                        return expense.amount !== undefined ? 
-                             <ReportsPageItem key={expense.id}
-                                expense={expense}
-                                category={global.globalState.categories[expense.categoryId].title}
-                                account={global.globalState.accounts[expense.accountId].title}
-                                />
-                                : null
-                    })
-                }
-            </ul>
-
         </div>
     )
 };
