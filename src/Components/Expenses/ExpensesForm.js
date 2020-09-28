@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import TrackerContext from "../../Context/TrackerContext";
+import "./ExpensesPage.css";
 
 const ExpensesForm = props => {
     const [amount, setAmount] = useState("");
@@ -12,12 +13,10 @@ const ExpensesForm = props => {
 
     useEffect(() => {
         if (props.expense) {
-            // console.log(props.expense)
             setAmount(props.expense.amount)
             setCategoryId(props.expense.categoryId);
             setAccountId(props.expense.accountId);
             setColor(props.expense.color)
-            // setDateCreated(!!props.expense.date);
             setDateCreated(props.expense.date);
         }
     }, [])
@@ -31,7 +30,6 @@ const ExpensesForm = props => {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
-        // today = mm + '/' + dd + '/' + yyyy;
         today = yyyy + "-" + mm + "-" + dd;
 
         let expense = { id: props.id, amount, date: today, categoryId, accountId, color };
@@ -40,19 +38,6 @@ const ExpensesForm = props => {
 
     const editExpense = e => {
         e.preventDefault();
-
-        // let today = new Date();
-
-        // if (dateCreated) {
-        //     const dd = String(today.getDate()).padStart(2, '0');
-        //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        //     const yyyy = today.getFullYear();
-
-        //     today = mm + '/' + dd + '/' + yyyy;
-        // } else {
-        //     today = null;
-        // }
-
 
         let expense = { id: props.id, amount, date: dateCreated, categoryId, accountId, color };
         props.editExpense(expense);
@@ -79,17 +64,15 @@ const ExpensesForm = props => {
     
     return (
         <form className="form" onSubmit={action}>
-            <label htmlFor="color">Color: 
-                <input type="color" id="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
+            <label>Color: 
+                <input type="color" name="color" value={color} onChange={e => setColor(e.target.value)} />
             </label>
 
             <input onChange={e => setAmount(e.target.value)} type="text" value={amount} placeholder="Amount" required="required" />
 
-            {/* <label htmlFor="dateCreate">Date</label>
-            <input onChange={() => setDateCreated(!dateCreated)} type="checkbox" id="dateCreated" name="dateCreated" /> */}
-
-            <label htmlFor="accountId">Account:
-                <select id="accountId" onChange={e => setAccountId(e.target.value)} >
+            <label>Account:
+                <select onChange={e => setAccountId(e.target.value)} required>
+                    <option value=""></option>
                     {
                         Object.keys(global.globalState.accounts).map(accountId => {
                             return <option key={`{${accountId}`} value={accountId}>{`${global.globalState.accounts[accountId].title}`}</option>
@@ -98,8 +81,9 @@ const ExpensesForm = props => {
                 </select> 
             </label>
 
-            <label htmlFor="categoryId">Category: 
-                <select id="categoryId" onChange={e => setCategoryId(e.target.value)}>
+            <label>Category: 
+                <select onChange={e => setCategoryId(e.target.value)} required>
+                    <option value=""></option>
                     {
                         Object.keys(global.globalState.categories).map(categoryId => {
                             return <option key={`{${categoryId}`} value={categoryId}>{`${global.globalState.categories[categoryId].title}`}</option>

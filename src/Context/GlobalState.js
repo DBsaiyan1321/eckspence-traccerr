@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react"; 
+import React, { useReducer } from "react"; 
 import TrackerContext from "./TrackerContext";
 import { trackerReducer } from "./reducers";
 
@@ -16,7 +16,6 @@ const GlobalState = props => {
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "General",
-                ownedCategories: [1],
                 ownedExpenses: [1]
             },
             2: {
@@ -25,8 +24,7 @@ const GlobalState = props => {
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "Whatever",
-                ownedCategories: [1],
-                ownedExpenses: [1]
+                ownedExpenses: []
             }, 
             3: { 
                 id: 3,
@@ -34,8 +32,7 @@ const GlobalState = props => {
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "Debt Free Journey",
-                ownedCategories: [1],
-                ownedExpenses: [1]
+                ownedExpenses: []
             }
         },
         categories: {
@@ -44,7 +41,6 @@ const GlobalState = props => {
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "General",
-                accountId: [1],
                 ownedExpenses: [1]
             }, 
             2: { 
@@ -52,22 +48,20 @@ const GlobalState = props => {
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "Entertainment",
-                accountId: [1],
-                ownedExpenses: [1]
+                ownedExpenses: []
             }, 
             3: { 
                 id: 3,
                 color: "#ff81d2",
                 icon: "FaAccessibleIcon",
                 title: "Groceries",
-                accountId: [1],
-                ownedExpenses: [1]
+                ownedExpenses: []
             }
         },
         expenses: {
             1: {
                 id: 1,
-                date: "9/25/20",
+                date: "2020-09-10",
                 amount: "259.32",
                 categoryId: 1,
                 accountId: 1,

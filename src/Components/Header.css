@@ -41,4 +41,10 @@
     color: white;
     font-family: 'IBM Plex Sans', sans-serif;
     text-transform: lowercase;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.1s ease-in-out;
+}
+
+.header-tab:hover { 
+    border-bottom: 1px solid white;
 }

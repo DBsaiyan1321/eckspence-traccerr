@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import { FaConnectdevelop, FaDAndD, FaDribbble, FaFortAwesome, FaJediOrder, FaRebel, FaBiohazard, FaBowlingBall, FaCarAlt, FaGraduationCap } from "react-icons/fa";
+import "./ExpensesPage.css";
 import ExpensesForm from "./ExpensesForm";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 const ExpensesPageItem = props => {
     const [edit, setEdit] = useState(false);
 
-    // let Icon = props.account.icon; 
     const divStyle = {
         backgroundColor: props.expense.color
     };
@@ -18,16 +18,18 @@ const ExpensesPageItem = props => {
         setEdit(!edit);
     }
 
+    let dateArr = props.expense.date.split("-");
+    let displayDate = [dateArr[1], dateArr[2], dateArr[0]].join("-");
+
     return (
-        edit ?
+        edit 
+        ?
             <ExpensesForm formType="edit" id={props.expense.id} expense={props.expense} cancelEdit={cancelEdit} editExpense={props.editExpense} /> 
-            :
-            // <div className="expenses-page-item">
-            // <div style={divStyle} className="expenses-page-item">
+        :
             <div className="expenses-page-item">
                 <div className="buttons"> 
-                    <button onClick={() => setEdit(!edit)} className="button">Edit</button>
-                    <button onClick={() => props.deleteExpense(props.expense.id)} className="button">Delete</button>
+                    <button onClick={() => setEdit(!edit)} className="button icon"><AiFillEdit /></button>
+                    <button onClick={() => props.deleteExpense(props.expense.id)} className="button icon"><AiFillDelete /></button>
                 </div>
                 <div className="colored-bar" style={divStyle}></div>
                 <div className="expenses-page-item-info">
@@ -35,7 +37,7 @@ const ExpensesPageItem = props => {
                         <p className="expenses-page-item-acc">{props.account}</p>
                         <p style={catStyle} className="expenses-page-item-cat">{props.category}</p>
                     </div>
-                    <p className="expenses-page-item-date">{props.expense.date}</p>
+                    <p className="expenses-page-item-date">{displayDate}</p>
                 </div>
                 <h1 className="expenses-page-item-amount">{`$${props.expense.amount}`}</h1>
             </div>

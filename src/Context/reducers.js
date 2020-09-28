@@ -22,6 +22,12 @@ export const trackerReducer = (oldState, action) => {
             return newState;
         case DELETE_ACCOUNT: 
             newState = Object.assign({}, oldState); 
+            let account = newState.accounts[action.accountId];
+            if (account && account.ownedExpenses) {
+                for (const expenseId of account.ownedExpenses) {
+                    delete newState.expenses[expenseId]
+                }
+            }
             delete newState.accounts[action.accountId]
             return newState;
         case ADD_CATEGORIES:
@@ -32,6 +38,12 @@ export const trackerReducer = (oldState, action) => {
             return newState;
         case DELETE_CATEGORY:
             newState = Object.assign({}, oldState);
+            let category = newState.categories[action.categoryId];
+            if (category && category.ownedExpenses) { 
+                for (const expenseId of category.ownedExpenses) { 
+                    delete newState.expenses[expenseId]
+                }
+            }
             delete newState.categories[action.categoryId]
             return newState;
         case ADD_EXPENSES:
@@ -39,10 +51,27 @@ export const trackerReducer = (oldState, action) => {
         case ADD_EXPENSE:
             newState = Object.assign({}, oldState);
             newState.expenses[action.expense.id] = { id: action.expense.id, ...action.expense }
+            if (action.expense.accountId) { 
+                // debugger
+                newState.accounts[action.expense.accountId].ownedExpenses.push(action.expense.id);
+            }
+            if (action.expense.categoryId) {
+                newState.categories[action.expense.categoryId].ownedExpenses.push(action.expense.id);
+            }
             return newState;
         case DELETE_EXPENSE:
-            // debugger
+            // This runs 3 times when I cancel my create. Idk why
             newState = Object.assign({}, oldState);
+            let expense = newState.expenses[action.expenseId];
+            let idx;
+            if (expense && expense.accountId) {
+                idx = newState.accounts[expense.accountId].ownedExpenses.indexOf(expense.id);
+                newState.accounts[expense.accountId].ownedExpenses.splice(idx, 1);
+            }
+            if (expense && expense.categoryId) {
+                idx = newState.categories[expense.categoryId].ownedExpenses.indexOf(expense.id);
+                newState.categories[expense.categoryId].ownedExpenses.splice(idx, 1);
+            }
             delete newState.expenses[action.expenseId]
             return newState;
         default: 

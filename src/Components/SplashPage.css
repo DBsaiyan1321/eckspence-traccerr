@@ -1,0 +1,28 @@
+.main-banner { 
+    height: 450px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.info-container { 
+    height: 300px;
+    position: relative;
+    margin: 10px;
+}
+
+.info { 
+    height: 300px;
+    border-radius: 10px;
+    background-color: white;
+    width: 80%;
+    position: absolute;
+}
+
+.right {
+    right: 0; 
+}
+
+.left { 
+    left: 0;
+}

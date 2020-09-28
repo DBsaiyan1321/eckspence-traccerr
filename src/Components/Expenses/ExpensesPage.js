@@ -3,17 +3,26 @@ import "../../reset.css";
 import "./ExpensesPage.css";
 import ExpensesPageItem from "./ExpensesPageItem";
 import ExpensesForm from "./ExpensesForm";
-import Header from "../Header";
 import TrackerContext from "../../Context/TrackerContext";
-import { ADD_EXPENSE, ADD_EXPENSES, DELETE_EXPENSE } from "../../Context/reducers";
+import { ADD_EXPENSE, DELETE_EXPENSE } from "../../Context/reducers";
 import uuid from "react-uuid";
 
 const ExpensesPage = props => {
-    const [expenses, setExpenses] = useState({});
+    // const [expenses, setExpenses] = useState({}); // Just in case I wanted to change it to where we can pass expenses into it through props
     const [categoryFilter, setCategoryFilter] = useState("");
     const [accountFilter, setAccountFilter] = useState("");
     const global = useContext(TrackerContext);
     
+    useEffect(() => { 
+        if (props.match.params.filters) { 
+            let filter = props.match.params.filters.split("-");
+            if (filter[0] === "account") { 
+                setAccountFilter(filter[1]);
+            } else { 
+                setCategoryFilter(filter[1]);
+            }
+        }
+    }, [])
 
     const addExpense = expense => {
         global.dispatch({ type: ADD_EXPENSE, expense })
@@ -37,9 +46,9 @@ const ExpensesPage = props => {
         <div className="expenses-page">
             <h1>Expenses</h1>
             <div className="filters"> 
-                <label htmlFor="accountFilter">
+                <label>
                     Account:
-                    <select id="accountFilter" onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
+                    <select onChange={e => setAccountFilter(e.target.value)} value={accountFilter}>
                         <option value=""></option>
                         {
                             Object.keys(global.globalState.accounts).map(accountId => {
@@ -49,7 +58,7 @@ const ExpensesPage = props => {
                     </select>
                 </label>
 
-                <label htmlFor="categoryFilter">
+                <label>
                     Category:
                     <select id="categoryFilter" onChange={e => setCategoryFilter(e.target.value)} value={categoryFilter}>
                         <option value=""></option>
